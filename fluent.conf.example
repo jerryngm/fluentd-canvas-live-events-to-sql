@@ -5,13 +5,13 @@
 <source>
 #doc: http://docs.fluentd.org/articles/in_http
   @type http
-  port 9880
+  port 9880 #your_config_here
   #setup https - required by Canvas
   #get free cert from letsencrypt with certbot 
   #https://www.digitalocean.com/community/tutorials/how-to-use-certbot-standalone-mode-to-retrieve-let-s-encrypt-ssl-certificates-on-ubuntu-16-04
   <transport tls>
-    cert_path /root/docker/ngixproxy/letsencrypt/live/npm-8/fullchain.pem
-    private_key_path /root/docker/ngixproxy/letsencrypt/live/npm-8/privkey.pem
+    cert_path /path/fullchain.pem #your_config_here
+    private_key_path /path/privkey.pem #your_config_here
   </transport>
 </source>
 
@@ -46,13 +46,13 @@
 <match canvas.**>
   #doc: https://github.com/fluent/fluent-plugin-sql
   @type sql
-  host 127.0.0.1
-  port 5432
-  database canvas_data
-  adapter postgresql
-  username postgres
-  password Musicazx2@
-  schema_search_path public
+  host 127.0.0.1                       #your_config_here
+  port 5432                            #your_config_here
+  database your_database_name          #your_config_here
+  adapter postgresql                   #your_config_here mysql2 or postgresql or etc
+  username your_database_username      #your_config_here
+  password your_database_password      #your_config_here
+  schema_search_path your_db_schema    #your_config_here
   pool 10
  # socket path_to_socket
   remove_tag_prefix canvas.
